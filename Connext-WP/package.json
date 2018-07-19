@@ -1,0 +1,18 @@
+{
+  "name": "wp-cxt",
+  "version": "1.14",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:marketingg2/connext-wp-vip.git"
+  },
+  "description": "Build information for the WP Connext plugin",
+  "author": {
+    "name": "Jared Cobb",
+    "email": "jared@alleyinteractive.com"
+  },
+  "devDependencies": {
+    "eslint": "^3.16.1",
+    "eslint-config-airbnb-base": "^11.1.0",
+    "eslint-plugin-import": "^2.2.0"
+  }
+}
