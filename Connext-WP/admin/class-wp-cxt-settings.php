@@ -198,6 +198,26 @@ class Wp_Cxt_Settings {
 								);
 							}
 							break;
+						case 'alphanumeric_dash':
+
+							// Allow the saving of empty fields or valid alphanumeric data
+							// and then sanitize it
+							if ( preg_match( '/^[a-zA-Z0-9\-]+$/', $field_value ) ) {
+								$sanitized_input[ $field_name ] = sanitize_text_field( $field_value );
+							} else {
+								add_settings_error(
+									$field_name,
+									$field_name,
+									sprintf(
+										esc_html__(
+											'%s can only contain letters, numbers or dashes',
+											'wp-cxt'
+										),
+										esc_html( $section['fields'][ $field_name ]['title'] )
+									)
+								);
+							}
+							break;
 						// As a precaution, if the config has defined a validation_type but it
 						// hasn't been defined here, ensure we at least sanitize it
 						default:
@@ -251,6 +271,16 @@ class Wp_Cxt_Settings {
 						'placeholder' => __( 'Config Code', 'wp-cxt' ),
 						'validation_type' => 'alphanumeric',
 						'description' => __( 'This is the configuration code you want to use. You can get this from the Connext Admin.', 'wp-cxt' ),
+						'attributes' => array(
+							'class' => 'regular-text',
+						),
+					),
+					'client_code' => array(
+						'title' => esc_html__( 'Client Code', 'wp-cxt' ),
+						'render_function' => 'render_textfield',
+						'placeholder' => __( 'Client Key', 'wp-cxt' ),
+						'validation_type' => 'alphanumeric_dash',
+						'description' => __( 'This is your routing code. You can get this from the Connext Admin.', 'wp-cxt' ),
 						'attributes' => array(
 							'class' => 'regular-text',
 						),
