@@ -2,7 +2,7 @@
 (function wpCxtInstance($) {
   var wpCxt = {
 
-    initialize() {
+    initialize: function() {
       Connext.init({
         siteCode: WP_CXT.siteCode,
         configCode: WP_CXT.configCode,
